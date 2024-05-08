@@ -54,6 +54,11 @@ g = lambda x,y:x*y
 print(g(3,4))
 print(g(5,6))
 
+print((lambda x:x*x)(3))
+print(globals())
+
+
+
 #불변형식
 a = 1.2
 print("a id:", id(a) )
