@@ -13,8 +13,16 @@ cur.execute("CREATE TABLE PhoneBook (Name text, PhonNum text);")
 
 #입력
 cur.execute("insert into PhoneBook values ('전우치', '010-222');")
+#입력 파라메터 처리
+name = "홍길동"
+phoneNumber = "010-123"
+cur.execute("insert into PhoneBook values (?,?);", (name,phoneNumber))
+#한번에 2개를 입력(다중 레코드) : 2차원 배열(Tuple 안의 Tuple)
+datalist = (("이순신", "010-222"), ("박문수", "010-567"))
+cur.executemany("insert into PhoneBook values (?,?);", datalist)
+
 
 #검색
 cur.execute("select * from PhoneBook;")
 for row in cur:
-    print(row)
+    print(row[0], row[1])
